@@ -23,6 +23,8 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "path": file_path,
         "status": "failed" if errors else "passed"
     }
+
+
 def format_linter_report(linter_report: dict) -> list:
     return [
         {
