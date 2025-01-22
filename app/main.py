@@ -24,15 +24,17 @@ def format_single_linter_file(file_path: str, errors: list) -> dict:
         "status": "failed" if errors else "passed"
     }
 def format_linter_report(linter_report: dict) -> list:
-    return [{'errors': [
-        {
-            "line": error.get("line_number"),
-            "column": error.get("column_number"),
-            "message": error.get("text"),
-            "name": error.get("code"),
-            "source": "flake8"
-        }
-        for error in linter_report["errors"]
+    return [{
+        "errors": [
+            {
+                "line": error.get("line_number"),
+                "column": error.get("column_number"),
+                "message": error.get("text"),
+                "name": error.get("code"),
+                "source": "flake8"
+            }
+            for error in linter_report["errors"]
+            # переглянути ключ for error in linter_report[". / source_code_2.py"]
         ],
         "path": linter_report.get("filename"),
         "status": "failed" if linter_report.get("errors") else "passed"
