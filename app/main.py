@@ -34,10 +34,10 @@ def format_linter_report(linter_report: dict) -> list:
                     "name": error.get("code"),
                     "source": "flake8",
                 }
-                for error in linter_report[file_key]
+                for error in linter_report[errors]
             ],
-            "path": file_key,
-            "status": "failed" if linter_report[file_key] else "passed",
+            "path": errors,
+            "status": "failed" if linter_report[errors] else "passed",
         }
-        for file_key in linter_report
+        for errors in linter_report
     ]
